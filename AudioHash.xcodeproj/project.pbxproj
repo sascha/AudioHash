@@ -13,6 +13,7 @@
 		2B9A00891A508C940091E2D6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B9A00881A508C940091E2D6 /* Images.xcassets */; };
 		2B9A008C1A508C940091E2D6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B9A008A1A508C940091E2D6 /* LaunchScreen.xib */; };
 		2B9A00981A508C940091E2D6 /* AudioHashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9A00971A508C940091E2D6 /* AudioHashTests.swift */; };
+		2B9A00A21A509DB40091E2D6 /* AudioHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9A00A11A509DB40091E2D6 /* AudioHash.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		2B9A00911A508C940091E2D6 /* AudioHashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AudioHashTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B9A00961A508C940091E2D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B9A00971A508C940091E2D6 /* AudioHashTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioHashTests.swift; sourceTree = "<group>"; };
+		2B9A00A11A509DB40091E2D6 /* AudioHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioHash.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,11 +80,12 @@
 			isa = PBXGroup;
 			children = (
 				2B9A00811A508C940091E2D6 /* AppDelegate.swift */,
-				2B9A00831A508C940091E2D6 /* ViewController.swift */,
-				2B9A00851A508C940091E2D6 /* Main.storyboard */,
+				2B9A00A11A509DB40091E2D6 /* AudioHash.swift */,
 				2B9A00881A508C940091E2D6 /* Images.xcassets */,
 				2B9A008A1A508C940091E2D6 /* LaunchScreen.xib */,
+				2B9A00851A508C940091E2D6 /* Main.storyboard */,
 				2B9A007F1A508C940091E2D6 /* Supporting Files */,
+				2B9A00831A508C940091E2D6 /* ViewController.swift */,
 			);
 			path = AudioHash;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B9A00841A508C940091E2D6 /* ViewController.swift in Sources */,
+				2B9A00A21A509DB40091E2D6 /* AudioHash.swift in Sources */,
 				2B9A00821A508C940091E2D6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
