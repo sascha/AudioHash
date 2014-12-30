@@ -44,15 +44,17 @@ func fft2bark(numberOfSamples: Int, samplingRate: Int, var numberOfFilters: Int 
     }
     
     // Bark per filter
-    let barkSpacing = barkDifference / Float(numberOfFilters) - 1
+    let barkSpacing = barkDifference / (Float(numberOfFilters) - 1)
     let binBarks = (0...(numberOfSamples / 2)).map { hz2bark(Float($0 * samplingRate / numberOfSamples)) }
     
     let wts = (0..<numberOfFilters).map { (i: Int) -> [Float] in
         let midBark = minBark + Float(i) * barkSpacing
-        let lowerBarkBounds = binBarks[i] - midBark - 0.5
-        let upperBarkBounds = binBarks[i] - midBark + 0.5
-        
-        return (0...(numberOfSamples / 2)).map { _ in powf(10, (min(0, min(upperBarkBounds, -2.5 * lowerBarkBounds) / barkWidth))) }
+        return (0...(numberOfSamples / 2)).map { j in
+            let lowerBarkBounds = binBarks[j] - midBark - 0.5
+            let upperBarkBounds = binBarks[j] - midBark + 0.5
+            
+            return powf(10, (min(0, min(upperBarkBounds, -2.5 * lowerBarkBounds) / barkWidth)))
+        }
     }
     
     return wts
@@ -77,7 +79,7 @@ func fingerprint(input: Sampling, samplingRate: Int) -> Fingerprint {
     
     while end < input.count {
         let workingSamples = input[start..<end]
-        let windowedWorkingSamples = multiply(Array(workingSamples), hanningWindow)
+        let windowedWorkingSamples = multiply(workingSamples, hanningWindow)
         let transformedWorkingSamples = fft(fftSetup, windowedWorkingSamples)
         let magnitudedWorkingSamples = abs(transformedWorkingSamples, frameLength)
         
@@ -118,9 +120,9 @@ func hanning(length: Int) -> [Float] {
     return hanningWindow
 }
 
-func multiply(input1: [Float], input2: [Float]) -> [Float] {
+func multiply(input1: Slice<Float>, input2: [Float]) -> [Float] {
     var output = [Float](count: min(input1.count, input2.count), repeatedValue: 0)
-    vDSP_vmul(input1, 1, input2, 1, &output, 1, vDSP_Length(output.count))
+    vDSP_vmul(input1.withUnsafeBufferPointer { $0.baseAddress }, 1, input2, 1, &output, 1, vDSP_Length(output.count))
     return output
 }
 
@@ -133,7 +135,7 @@ func fft(setup: FFTSetup, input: [Float]) -> DSPSplitComplex {
     var imag = [Float](count: input.count / 2, repeatedValue: 0)
     var dspSplitComplex = DSPSplitComplex(realp: &real, imagp: &imag)
     
-    var inputAsComplex = UnsafePointer<DSPComplex>( input.withUnsafeBufferPointer { $0.baseAddress } )
+    var inputAsComplex = UnsafePointer<DSPComplex>(input.withUnsafeBufferPointer { $0.baseAddress })
     vDSP_ctoz(inputAsComplex, 2, &dspSplitComplex, 1, vDSP_Length(real.count))
     vDSP_fft_zrip(setup, &dspSplitComplex, 1, vDSP_Length(log2(Double(input.count))), FFTDirection(kFFTDirection_Forward) )
     

@@ -14,6 +14,8 @@
 		2B9A008C1A508C940091E2D6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B9A008A1A508C940091E2D6 /* LaunchScreen.xib */; };
 		2B9A00981A508C940091E2D6 /* AudioHashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9A00971A508C940091E2D6 /* AudioHashTests.swift */; };
 		2B9A00A21A509DB40091E2D6 /* AudioHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9A00A11A509DB40091E2D6 /* AudioHash.swift */; };
+		2BC6CA241A521EBB001A69E3 /* sirene-aufnahme.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2BC6CA221A521EBB001A69E3 /* sirene-aufnahme.wav */; };
+		2BC6CA251A521EBB001A69E3 /* sirene-original.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2BC6CA231A521EBB001A69E3 /* sirene-original.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 		2B9A00961A508C940091E2D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B9A00971A508C940091E2D6 /* AudioHashTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioHashTests.swift; sourceTree = "<group>"; };
 		2B9A00A11A509DB40091E2D6 /* AudioHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioHash.swift; sourceTree = "<group>"; };
+		2BC6CA221A521EBB001A69E3 /* sirene-aufnahme.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "sirene-aufnahme.wav"; sourceTree = "<group>"; };
+		2BC6CA231A521EBB001A69E3 /* sirene-original.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "sirene-original.wav"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,7 @@
 				2B9A00881A508C940091E2D6 /* Images.xcassets */,
 				2B9A008A1A508C940091E2D6 /* LaunchScreen.xib */,
 				2B9A00851A508C940091E2D6 /* Main.storyboard */,
+				2BC6CA211A521EAB001A69E3 /* Resources */,
 				2B9A007F1A508C940091E2D6 /* Supporting Files */,
 				2B9A00831A508C940091E2D6 /* ViewController.swift */,
 			);
@@ -113,6 +118,15 @@
 				2B9A00961A508C940091E2D6 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2BC6CA211A521EAB001A69E3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2BC6CA221A521EBB001A69E3 /* sirene-aufnahme.wav */,
+				2BC6CA231A521EBB001A69E3 /* sirene-original.wav */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,7 +211,9 @@
 			files = (
 				2B9A00871A508C940091E2D6 /* Main.storyboard in Resources */,
 				2B9A008C1A508C940091E2D6 /* LaunchScreen.xib in Resources */,
+				2BC6CA251A521EBB001A69E3 /* sirene-original.wav in Resources */,
 				2B9A00891A508C940091E2D6 /* Images.xcassets in Resources */,
+				2BC6CA241A521EBB001A69E3 /* sirene-aufnahme.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +297,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -293,11 +309,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-Ounchecked";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -330,9 +346,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Ounchecked";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -411,6 +428,7 @@
 				2B9A009D1A508C940091E2D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2B9A009E1A508C940091E2D6 /* Build configuration list for PBXNativeTarget "AudioHashTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +437,7 @@
 				2B9A00A01A508C940091E2D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
