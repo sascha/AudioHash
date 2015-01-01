@@ -45,57 +45,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return samples
     }
-    
-    func printFingerprint(fingerprint: Fingerprint) {
-        for subfingerprint in fingerprint {
-            for k in stride(from: sizeof(subfingerprint.dynamicType) * 8 - 1, through: 0, by: -1) {
-                let test = pow(Float(2), Float(k))
-                let bit = subfingerprint & UInt32(test)
-                print("\(bit == 0 ? 0 : 1)")
-            }
-            println()
-        }
-    }
-    
-    func checkForEqualityOfRecordings(fingerprint1: Fingerprint, fingerprint2: Fingerprint, threshold: Float = 0.35, blockSize:Int = 256) -> Bool {
-        for i in 0 ..< (fingerprint1.count - blockSize) {
-            for j in 0 ..< (fingerprint2.count - blockSize) {
-                let ber = bitErrorRateForBlocks(fingerprint1[i ..< (i + blockSize)], block2: fingerprint2[j ..< (j + blockSize)])
-                if ber <= threshold {
-                    return true
-                }
-            }
-        }
-        
-        return false
-    }
-    
-    // TODO: Implement better hamming weight algorithm
-    func numberOfSetBits(var subfingerprint: UInt32) -> Int {
-        var count = 0
-        while subfingerprint > 0 {
-            if (subfingerprint & 1) == 1 {
-                count++
-            }
-            
-            subfingerprint >>= 1
-        }
-        
-        return count
-    }
-    
-    func bitErrorRateForBlocks(block1: Slice<UInt32>, block2: Slice<UInt32>) -> Float {
-        let totalNumberOfOneBits = reduce((0 ..< block1.count), 0) { initial, i in
-            let xorHash = block1[i] ^ block2[i]
-            return initial + self.numberOfSetBits(xorHash)
-        }
-                
-        return Float(totalNumberOfOneBits / (sizeof(UInt32) * 8 * block1.count))
-    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let originalSoundFileURL = NSBundle.mainBundle().URLForResource("sirene-original", withExtension: "wav")
-        let recordedSoundFileURL = NSBundle.mainBundle().URLForResource("sirene-aufnahme", withExtension: "wav")
+        let originalSoundFileURL = NSBundle.mainBundle().URLForResource("siren-original", withExtension: "wav")
+        let recordedSoundFileURL = NSBundle.mainBundle().URLForResource("siren-recording", withExtension: "wav")
         
         var originalFileRef = ExtAudioFileRef()
         ExtAudioFileOpenURL(originalSoundFileURL, &originalFileRef)
@@ -106,14 +59,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let originalFileSampling = sampling(originalFileRef)
         let recordedFileSampling = sampling(recordedFileRef)
         
-        let originalFingerprint = fingerprint(originalFileSampling, 5536)
-        let recordedFingerprint = fingerprint(recordedFileSampling, 5536)
+        let originalFingerprint = fingerprint(originalFileSampling)
+        let recordedFingerprint = fingerprint(recordedFileSampling)
 
-        printFingerprint(originalFingerprint)
+        debugPrintln(originalFingerprint)
         
-        let equal = checkForEqualityOfRecordings(originalFingerprint, fingerprint2: recordedFingerprint)
-        
-        if equal {
+        if originalFingerprint.isEqualTo(recordedFingerprint) {
             println("Recordings are equal")
         } else {
             println("Recordings are not equal")

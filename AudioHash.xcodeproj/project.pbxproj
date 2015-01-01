@@ -14,8 +14,8 @@
 		2B9A008C1A508C940091E2D6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B9A008A1A508C940091E2D6 /* LaunchScreen.xib */; };
 		2B9A00981A508C940091E2D6 /* AudioHashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9A00971A508C940091E2D6 /* AudioHashTests.swift */; };
 		2B9A00A21A509DB40091E2D6 /* AudioHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9A00A11A509DB40091E2D6 /* AudioHash.swift */; };
-		2BC6CA241A521EBB001A69E3 /* sirene-aufnahme.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2BC6CA221A521EBB001A69E3 /* sirene-aufnahme.wav */; };
-		2BC6CA251A521EBB001A69E3 /* sirene-original.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2BC6CA231A521EBB001A69E3 /* sirene-original.wav */; };
+		2BC6CA241A521EBB001A69E3 /* siren-recording.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2BC6CA221A521EBB001A69E3 /* siren-recording.wav */; };
+		2BC6CA251A521EBB001A69E3 /* siren-original.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2BC6CA231A521EBB001A69E3 /* siren-original.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,8 +40,8 @@
 		2B9A00961A508C940091E2D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B9A00971A508C940091E2D6 /* AudioHashTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioHashTests.swift; sourceTree = "<group>"; };
 		2B9A00A11A509DB40091E2D6 /* AudioHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioHash.swift; sourceTree = "<group>"; };
-		2BC6CA221A521EBB001A69E3 /* sirene-aufnahme.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "sirene-aufnahme.wav"; sourceTree = "<group>"; };
-		2BC6CA231A521EBB001A69E3 /* sirene-original.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "sirene-original.wav"; sourceTree = "<group>"; };
+		2BC6CA221A521EBB001A69E3 /* siren-recording.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "siren-recording.wav"; sourceTree = "<group>"; };
+		2BC6CA231A521EBB001A69E3 /* siren-original.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "siren-original.wav"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,8 +123,8 @@
 		2BC6CA211A521EAB001A69E3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2BC6CA221A521EBB001A69E3 /* sirene-aufnahme.wav */,
-				2BC6CA231A521EBB001A69E3 /* sirene-original.wav */,
+				2BC6CA231A521EBB001A69E3 /* siren-original.wav */,
+				2BC6CA221A521EBB001A69E3 /* siren-recording.wav */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -211,9 +211,9 @@
 			files = (
 				2B9A00871A508C940091E2D6 /* Main.storyboard in Resources */,
 				2B9A008C1A508C940091E2D6 /* LaunchScreen.xib in Resources */,
-				2BC6CA251A521EBB001A69E3 /* sirene-original.wav in Resources */,
+				2BC6CA251A521EBB001A69E3 /* siren-original.wav in Resources */,
 				2B9A00891A508C940091E2D6 /* Images.xcassets in Resources */,
-				2BC6CA241A521EBB001A69E3 /* sirene-aufnahme.wav in Resources */,
+				2BC6CA241A521EBB001A69E3 /* siren-recording.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
